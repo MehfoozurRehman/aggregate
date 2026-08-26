@@ -1,7 +1,7 @@
 {
   "name": "@convex-dev/aggregate",
   "description": "Convex component to calculate counts and sums of values for efficient aggregation.",
-  "version": "0.2.2",
+  "version": "0.3.0-alpha.1",
   "keywords": [
     "convex",
     "component",
@@ -15,11 +15,11 @@
   "license": "Apache-2.0",
   "type": "module",
   "scripts": {
-    "dev": "convex dev --start 'npm run dev:build'",
+    "dev": "node api.js && convex dev --start 'npm run dev:build'",
     "dev:frontend": "cd example && vite --clearScreen false",
     "dev:build": "chokidar 'tsconfig*.json' 'src/**/*.ts' -i '**/*.test.ts' -c 'npm run build:codegen' --initial",
     "predev": "convex init && npm run build:codegen",
-    "build": "tsc --project ./tsconfig.build.json",
+    "build": "node api.js && tsc --project ./tsconfig.build.json",
     "build:codegen": "npx convex codegen --component-dir ./src/component && npm run build",
     "build:clean": "rm -rf dist *.tsbuildinfo && npm run build:codegen",
     "typecheck": "tsc --noEmit && tsc -p example && tsc -p example/convex",
